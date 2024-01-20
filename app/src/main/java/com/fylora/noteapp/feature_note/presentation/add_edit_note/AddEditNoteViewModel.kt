@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddEditNoteViewModel @Inject constructor(
     private val useCases: NoteUseCases,
-    private val savedStateHandle: SavedStateHandle
+    savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     private val _noteTitle = mutableStateOf(NoteTextFieldState(
@@ -40,6 +40,12 @@ class AddEditNoteViewModel @Inject constructor(
     private var currentNoteId: Int? = null
 
     init {
+        savedStateHandle.get<String>("noteContent")?.let {
+            _noteBody.value = noteBody.value.copy(
+                text = it
+            )
+        }
+
         savedStateHandle.get<Int>("noteId")?.let {noteId ->
             if(noteId != -1){
                 viewModelScope.launch {

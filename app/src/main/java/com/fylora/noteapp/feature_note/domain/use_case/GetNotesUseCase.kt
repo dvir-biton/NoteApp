@@ -1,6 +1,5 @@
 package com.fylora.noteapp.feature_note.domain.use_case
 
-import androidx.compose.ui.text.toLowerCase
 import com.fylora.noteapp.feature_note.domain.model.Note
 import com.fylora.noteapp.feature_note.domain.repository.NoteRepository
 import com.fylora.noteapp.feature_note.domain.util.NoteOrder
